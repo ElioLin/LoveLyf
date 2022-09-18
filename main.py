@@ -37,10 +37,8 @@ def get_birthday():
   return (next - today).days
 
 def get_firstKissDate():
-  next = datetime.strptime(str(date.today().year) + "-" + first_kiss_date, "%Y-%m-%d")
-  if next < datetime.now():
-    next = next.replace(year=next.year + 1)
-  return (next - today).days
+  delta = today - datetime.strptime(first_kiss_date, "%Y-%m-%d")
+  return delta.days
 
 def get_words():
   words = requests.get("https://api.shadiao.pro/chp")
